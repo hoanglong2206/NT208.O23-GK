@@ -11,5 +11,10 @@ class Idea extends Model
 
     // protected $withCount = ['likes'];
 
-    protected $fillable = [ 'content', 'likes'];
+    protected $fillable = ['content', 'likes'];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'idea_id', 'id');
+    }
 }
