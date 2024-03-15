@@ -8,22 +8,22 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav align-items-center">
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                        <a class="nav-link active" aria-current="page" href="{{ route('login') }}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/register">Register</a>
+                        <a class="nav-link" href="{{ route('register') }}">Register</a>
                     </li>
                 @endguest
 
                 @auth()
                     <li class="nav-item">
-                        <a class="nav-link" href="/profile">{{ Auth::user()->name }}</a>
+                        <a class="nav-link" href="{{ route('profile') }}">{{ Auth::user()->name }}</a>
                     </li>
                     <li class="nav-item">
-                        <form action="{{route('logout')}}" method="post">
+                        <form action="{{ route('logout') }}" method="post">
                             @csrf
                             <button class="btn btn-danger btn-sm" type="submit">Logout</button>
                         </form>
