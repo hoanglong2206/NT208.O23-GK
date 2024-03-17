@@ -5,16 +5,25 @@
                 <img style="width:50px" class="me-2 avatar-sm rounded-circle" src="{{ $idea->user->getImageURL() }}"
                     alt="{{ $idea->user->name }}">
                 <div>
-                    <h5 class="card-title mb-0"><a class="text-decoration-none" href="{{ route('users.show', $idea->user->id) }}">
+                    <h5 class="card-title mb-0"><a class="text-decoration-none"
+                            href="{{ route('users.show', $idea->user->id) }}">
                             {{ $idea->user->name }}
                         </a></h5>
                 </div>
             </div>
             <div class="d-flex">
-                <a class="btn btn-info btn-sm" href="{{ route('ideas.show', $idea->id) }}"> View </a>
+                @if ($showing ?? false)
+                    <div></div>
+                @else
+                    <a class="btn btn-info btn-sm" href="{{ route('ideas.show', $idea->id) }}"> View </a>
+                @endif
                 @auth()
                     @can('update', $idea)
-                        <a class="btn btn-secondary btn-sm mx-2" href="{{ route('ideas.edit', $idea->id) }}"> Edit </a>
+                        @if ($editing ?? false)
+                            <div></div>
+                        @else
+                            <a class="btn btn-secondary btn-sm mx-2" href="{{ route('ideas.edit', $idea->id) }}"> Edit </a>
+                        @endif
                         <form method="POST" action="{{ route('ideas.destroy', $idea->id) }}">
                             @csrf
                             @method('delete')
@@ -39,14 +48,17 @@
                     @enderror
                 </div>
                 <div class="">
-                    <button class="btn btn-dark mt-2 btn-small"> Submit </button>
+                    <button class="btn btn-primary btn-sm"> save </button>
                 </div>
             </form>
+        @else
+            <p class="fs-6 fw-light text-muted">
+                {{ $idea->content }}
+            </p>
         @endif
-        <p class="fs-6 fw-light text-muted">
-            {{ $idea->content }}
-        </p>
-        <div class="d-flex justify-content-between">
+
+
+        <div class="d-flex justify-content-between mt-2">
             <div>
                 <a href="#" class="fw-light nav-link fs-6"> <span class="fas fa-heart me-1">
                     </span> {{ $idea->likes }} </a>

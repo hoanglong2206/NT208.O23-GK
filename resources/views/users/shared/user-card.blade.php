@@ -24,7 +24,7 @@
                 </p>
             </div>
             @include('users.shared.user-stats')
-            {{-- @auth()
+            @auth()
                 @if (Auth::user()->isNot($user))
                     <div class="mt-3">
                         @if (Auth::user()->follows($user))
@@ -40,7 +40,7 @@
                         @endif
                     </div>
                 @endif
-            @endauth --}}
+            @endauth
         </div>
     </div>
 </div>
