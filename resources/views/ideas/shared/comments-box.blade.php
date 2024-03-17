@@ -1,4 +1,4 @@
-<div>
+<div class="mt-2">
     @auth()
         <form action="{{ route('ideas.comments.store', $idea->id) }}" method="post">
             @csrf
