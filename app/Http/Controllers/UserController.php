@@ -53,18 +53,6 @@ class UserController extends Controller
         return redirect()->route('profile');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(User $user)
-    {
-        $this->authorize('delete', $user);
-
-        $user->delete();
-
-        return redirect()->route('dashboard');
-    }
-
     public function profile()
     {
         return $this->show(auth()->user());

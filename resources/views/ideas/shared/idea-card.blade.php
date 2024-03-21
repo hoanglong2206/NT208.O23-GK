@@ -59,15 +59,16 @@
 
 
         <div class="d-flex justify-content-between mt-2">
-            <div>
-                <a href="#" class="fw-light nav-link fs-6"> <span class="fas fa-heart me-1">
-                    </span> {{ $idea->likes }} </a>
-            </div>
+            @include('ideas.shared.like-button')
             <div>
                 <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
-                    {{ $idea->created_at }} </span>
+                    {{ $idea->created_at->diffForHumans() }} </span>
             </div>
         </div>
-        @include('ideas.shared.comments-box')
+        @if ($editing ?? false)
+            <div></div>
+        @else
+            @include('ideas.shared.comments-box')
+        @endif
     </div>
 </div>
