@@ -47,8 +47,8 @@
                         </span>
                     @enderror
                 </div>
-                <div class="">
-                    <button class="btn btn-primary btn-sm"> save </button>
+                <div class="d-flex justify-content-end">
+                    <button class="btn btn-primary btn-sm "> save </button>
                 </div>
             </form>
         @else
@@ -58,7 +58,7 @@
         @endif
 
 
-        <div class="d-flex justify-content-between mt-2">
+        <div class="d-flex justify-content-between mt-4">
             @include('ideas.shared.like-button')
             <div>
                 <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>

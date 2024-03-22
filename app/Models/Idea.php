@@ -9,7 +9,7 @@ class Idea extends Model
 {
     use HasFactory;
 
-    // protected $withCount = ['likes'];
+    protected $withCount = ['likes'];
 
     protected $with = ['user:id,name,image', 'comments.user:id,name,image'];
 
